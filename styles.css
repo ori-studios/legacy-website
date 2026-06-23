@@ -123,7 +123,21 @@ p {
     transition: opacity 0.5s ease;
 }
 
+.splash-text {
+  animation: pulse 0.65s ease-in-out infinite;
+  color: yellow;
+  text-shadow: 2px 2px #3f3f00;
+  position: absolute;
+  right: 150px;
+  top: 200px;
+  rotate: 25deg;
+  font-size: 16px;
+}
 
+@keyframes pulse {
+  0%, 100% { transform: scale(2);    }
+  50%       { transform: scale(2.20); }
+}
 
 .top-title-small-default {
     margin-top: 0px;

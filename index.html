@@ -49,28 +49,47 @@
 
         <div class="top-bar">
             <nav>
-                <a href="index.html">Home</a>
-
+                <a href="how2join.html">Play Now!</a>
                 <a href="rules.html">Rules</a>
-
-                <a href="how2join.html">Play Now</a>
-
-                <a href="updates.html">Changelogs</a>
-
+                <a href="updates.html">Updates</a>
                 <a href="http://map.legacy-smp.uk/" target="_blank" rel="noopener noreferrer">Server Map</a>
-
                 <a href="https://discord.gg/az84gJQx5R" target="_blank" rel="noopener noreferrer">Discord</a>
-
-
             </nav>
-
-            <img src="images/minecraft_title.png" class="top-title-small" />
-            <img src="images/minecraft_title.png" class="minecraft-title" />
+            <img src="images/main-page/title.webp" class="top-title-small" />
+            <img src="images/main-page/title.webp" class="minecraft-title" />
         </div>
-
         <div class="image-container">
-            <img src="images/smp-image.png" class="smp-image" />
+            <img src="images/main-page/smp.webp" class="smp-image" />
         </div>
+
+
+        <p class="splash-text" id="splash-text"></p>
+    <script>
+        const presets = [
+            "Welcome To Our Site!",
+            "Made By Ori-Studios",
+            "Tendo crashed the server",
+            "A Taste Of Nostalgia",
+            "Thanks For Visiting!",
+            "Over 1000 Joins!",
+            "Join Our Discord!",
+            "Only a few bugs...",
+            "Works With Bedrock!",
+            "Chicken Butt!"
+         ];
+
+            let lastIndex = parseInt(localStorage.getItem("lastMessage"));
+let newIndex;
+
+do {
+    newIndex = Math.floor(Math.random() * presets.length);
+} while (newIndex === lastIndex && presets.length > 1);
+
+document.getElementById("splash-text").textContent = presets[newIndex];
+
+localStorage.setItem("lastMessage", newIndex);        
+    </script>
+
 
         <div class="title-button-wrapper">
             <a href="how2join.html">
@@ -112,7 +131,7 @@
             <div class="square-row">
                 <div class="square-with-text">
                     <div class="square">
-                        <img src="images/image_1.png" />
+                        <img src="images/features/textures.webp" />
                     </div>
 
                     <div class="square-text">
@@ -123,7 +142,7 @@
 
                 <div class="square-with-text">
                     <div class="square">
-                        <img src="images/image_2.png" />
+                        <img src="images/features/combat.webp" />
                     </div>
 
                     <div class="square-text">
@@ -134,7 +153,7 @@
 
                 <div class="square-with-text">
                     <div class="square">
-                        <img src="images/image_3.png" />
+                        <img src="images/features/terrain.webp" />
                     </div>
 
                     <div class="square-text">
@@ -145,7 +164,7 @@
 
                 <div class="square-with-text">
                     <div class="square">
-                        <img src="images/image_4.webp" />
+                        <img src="images/features/bedrock.webp" />
                     </div>
 
                     <div class="square-text">
@@ -155,7 +174,7 @@
                 </div>
                 <div class="square-with-text">
                     <div class="square">
-                        <img src="images/image_5.png" />
+                        <img src="images/features/community.webp" />
                     </div>
 
                     <div class="square-text">
@@ -169,26 +188,26 @@
                 <h1>Staff Team:</h1>
 
                 <div class="staff-card">
-                    <img src="images/staff/ori.png" class="staff-img" />
+                    <img src="images/staff/orititan.webp" class="staff-img" />
                     <div class="staff-info">
                         <h2>Orititan</h2>
-                        <p><u>Server Owner</u> - Oversees development and management.</p>
+                        <p><u>Server Founder</u> - Oversees development and management.</p>
                     </div>
                 </div>
 
                 <div class="staff-card">
-                    <img src="images/staff/maketendo.png" class="staff-img" />
+                    <img src="images/staff/maketendo.webp" class="staff-img" />
                     <div class="staff-info">
                         <h2>Maketendo</h2>
-                        <p><u>Developer</u> - Handles server development and server-side coding.</p>
+                        <p><u>Co-Owner</u> - Handles server development and server-side coding.</p>
                     </div>
                 </div>
 
                 <div class="staff-card">
-                    <img src="images/staff/ozic.png" class="staff-img" />
+                    <img src="images/staff/ozic.webp" class="staff-img" />
                     <div class="staff-info">
                         <h2>OzicScout</h2>
-                        <p><u>Admin</u> - Ticket Support, events, and Moderation.</p>
+                        <p><u>Admin</u> - Ticket Support, Event Planning, and Moderation.</p>
                     </div>
                 </div>
 
@@ -196,15 +215,15 @@
                     <img src="images/staff/hydra.png" class="staff-img" />
                     <div class="staff-info">
                         <h2>_6hp</h2>
-                        <p><u>Moderator</u> - Ticket Support and Moderation.</p>
+                        <p><u>Admin</u> - Ticket Support, Staff Training & Moderation</p>
                     </div>
                 </div>
 
                 <div class="staff-card">
-                    <img src="images/staff/shin.png" class="staff-img" />
+                    <img src="images/staff/shin.webp" class="staff-img" />
                     <div class="staff-info">
                         <h2>Shin_Chan_X</h2>
-                        <p><u>Moderator</u> - Event's Handling, Moderation, Ticket Support.</p>
+                        <p><u>SMP Builder</u> - Event's Handling</p>
                     </div>
                 </div>
             </div>
