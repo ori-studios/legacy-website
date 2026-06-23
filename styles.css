@@ -126,7 +126,7 @@ p {
 .splash-text {
   animation: pulse 0.65s ease-in-out infinite;
   color: yellow;
-  text-shadow: 2px 2px #3f3f00;
+  text-shadow: 1.8px 1.8px #3f3f00;
   position: absolute;
   right: 150px;
   top: 200px;

@@ -19,33 +19,7 @@
         </script>
     </head>
     <body>
-        <script>
-            window.addEventListener("scroll", () => {
-                const bigTitle = document.querySelector(".minecraft-title");
-                const smallTitle = document.querySelector(".top-title-small");
-
-                if (window.scrollY > 100) {
-                    bigTitle.style.opacity = "0";
-                    smallTitle.style.opacity = "1";
-                } else {
-                    bigTitle.style.opacity = "1";
-                    smallTitle.style.opacity = "0";
-                }
-            });
-
-            function updateButtonPosition() {
-                const title = document.querySelector(".minecraft-title");
-                const buttonWrapper = document.querySelector(".title-button-wrapper");
-
-                const titleRect = title.getBoundingClientRect();
-                const pageCenterX = titleRect.left + titleRect.width / 2 + 35;
-
-                buttonWrapper.style.left = pageCenterX + "px";
-            }
-
-            window.addEventListener("resize", updateButtonPosition);
-            window.addEventListener("load", updateButtonPosition);
-        </script>
+        <script src="javascript/title-fade.js"></script>
 
         <div class="top-bar">
             <nav>
@@ -64,31 +38,7 @@
 
 
         <p class="splash-text" id="splash-text"></p>
-    <script>
-        const presets = [
-            "Welcome To Our Site!",
-            "Made By Ori-Studios",
-            "Tendo crashed the server",
-            "A Taste Of Nostalgia",
-            "Thanks For Visiting!",
-            "Over 1000 Joins!",
-            "Join Our Discord!",
-            "Only a few bugs...",
-            "Works With Bedrock!",
-            "Chicken Butt!"
-         ];
-
-            let lastIndex = parseInt(localStorage.getItem("lastMessage"));
-let newIndex;
-
-do {
-    newIndex = Math.floor(Math.random() * presets.length);
-} while (newIndex === lastIndex && presets.length > 1);
-
-document.getElementById("splash-text").textContent = presets[newIndex];
-
-localStorage.setItem("lastMessage", newIndex);        
-    </script>
+    <script src="javascript/splash-text.js"></script>
 
 
         <div class="title-button-wrapper">
@@ -248,24 +198,7 @@ localStorage.setItem("lastMessage", newIndex);
                 </button>
             </div>
 
-            <script>
-                const videos = ["GWgfnSme_L4", "REm3hyA4D_s", "ipI41GVSwBs", "sgNrAGMPurA"];
-                let current = 0;
-
-                function updateVideo() {
-                    document.getElementById("ytPlayer").src = "https://www.youtube.com/embed/" + videos[current];
-                }
-
-                function nextVideo() {
-                    current = (current + 1) % videos.length;
-                    updateVideo();
-                }
-
-                function prevVideo() {
-                    current = (current - 1 + videos.length) % videos.length;
-                    updateVideo();
-                }
-            </script>
+            <script src="javascript/youtube-player.js"></script>
         </div>
     </body>
 </html>
