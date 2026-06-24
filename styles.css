@@ -367,12 +367,14 @@ p {
 }
 
 .staff-section {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
     margin: 40px auto;
-    width: 80%;
-    max-width: 900px;
+    width: 100%;
+    max-width: 800px;
+    align-content: center;
+    justify-content: center;
 }
 
 /* Main staff card */
@@ -381,11 +383,10 @@ p {
     gap: 20px;
     padding: 15px;
     background: #9d9d9d;
-    /*border: 2px solid #000;*/
     box-shadow:
         inset -4px -4px #ffffff,
         inset 4px 4px #3e3e3e;
-    align-items: center;
+    align-items: left;
 }
 
 .staff-card {
@@ -488,6 +489,7 @@ p {
     font-size: 1rem;
     color: white;
     line-height: 1.3;
+    text-align: left;
     text-shadow: 2px 2px rgba(32, 32, 32)
 }
 
@@ -541,9 +543,6 @@ p {
 
 .side-btn.right img {
     transform: scaleX(-1);
-}
-.rule-info {
-
 }
 
 .image-join {
