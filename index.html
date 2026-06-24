@@ -2,63 +2,26 @@
 <html lang="en">
     <head>
         <title>Legacy SMP</title>
-        <link rel="icon" type="image/x-icon" href="images\favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles.css" />
-
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LG9JWCLH6D"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-
-            gtag("config", "G-LG9JWCLH6D");
-        </script>
+        <script src="javascript/gtag.js"></script>
     </head>
     <body>
-        <script src="javascript/title-fade.js"></script>
+        <script src="javascript/title-fade.js" defer></script>
+        <script src="javascript/nav.js" data-home="true"></script>
 
-        <div class="top-bar">
-            <nav>
-                <a href="how2join.html">Play Now!</a>
-                <a href="rules.html">Rules</a>
-                <a href="updates.html">Updates</a>
-                <a href="http://map.legacy-smp.uk/" target="_blank" rel="noopener noreferrer">Server Map</a>
-                <a href="https://discord.gg/az84gJQx5R" target="_blank" rel="noopener noreferrer">Discord</a>
-            </nav>
-            <img src="images/main-page/title.webp" class="top-title-small" />
-            <img src="images/main-page/title.webp" class="minecraft-title" />
-        </div>
         <div class="image-container">
             <img src="images/main-page/smp.webp" class="smp-image" />
         </div>
 
-
         <p class="splash-text" id="splash-text"></p>
-    <script src="javascript/splash-text.js"></script>
-
+        <script src="javascript/splash-text.js"></script>
 
         <div class="title-button-wrapper">
             <a href="how2join.html">
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
                 <div class="mc-button" style="--btn-size: 34px">
                     <div class="title">Join the SMP Now!</div>
                 </div>
@@ -66,7 +29,7 @@
         </div>
 
         <div class="content">
-            <div class="Intro Sentence">
+            <div class="intro-sentence">
                 <h1>Welcome to Legacy SMP!</h1>
                 <p>
                     In our minecraft server, we try to turn Modern Minecraft into a nostalgic throwback to the old
@@ -96,7 +59,7 @@
                     </div>
 
                     <div class="square-text">
-                        <h3>Old Combat!</h3>
+                        <h3>Old Style Combat!</h3>
                         <p>Fight mobs, players and more with old-styled PvP!</p>
                     </div>
                 </div>
@@ -119,7 +82,7 @@
 
                     <div class="square-text">
                         <h3>Bedrock Support!</h3>
-                        <p>Play alongside bedrock players, possible with Geyser!</p>
+                        <p>Play alongside bedrock players!</p>
                     </div>
                 </div>
                 <div class="square-with-text">
@@ -135,8 +98,6 @@
             </div>
             <h1>Staff Team:</h1>
             <div class="staff-section">
-                
-
                 <div class="staff-card">
                     <img src="images/staff/orititan.webp" class="staff-img" />
                     <div class="staff-info">
@@ -200,5 +161,6 @@
 
             <script src="javascript/youtube-player.js"></script>
         </div>
+        <script src="javascript/sidebar.js"></script>
     </body>
 </html>

@@ -19,6 +19,11 @@
     src: url("fonts/Regular.otf") format("opentype");
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: #dfdfdf;
     cursor: url("images/cursor.png"), auto;
@@ -128,15 +133,15 @@ p {
   color: yellow;
   text-shadow: 1.8px 1.8px #3f3f00;
   position: absolute;
-  right: 150px;
+  right: 200px;
   top: 200px;
   rotate: 25deg;
   font-size: 16px;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(2);    }
-  50%       { transform: scale(2.20); }
+  0%, 100% { transform: scale(3);    }
+  50%       { transform: scale(3.20); }
 }
 
 .top-title-small-default {
@@ -149,7 +154,7 @@ p {
 }
 
 .content {
-    padding: 15px;
+    padding: 75px 15px 15px;
 }
 
 .image-container {
@@ -188,8 +193,6 @@ p {
 .button-wrapper {
     position: absolute;
     bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 10;
 
     display: flex;
@@ -200,9 +203,9 @@ p {
 .title-button-wrapper {
     scale: 1.2;
     position: absolute;
-    bottom: 10;
-    transform: translateX(-50%);
+    bottom: 10px;
     left: 50%;
+    transform: translateX(-50%);
     z-index: 50;
 }
 
@@ -241,9 +244,9 @@ p {
 
 .title-button-wrapper {
     position: absolute;
-    top: 265px;
+    top: 600px;
+    left: 50%;
     transform: translateX(-50%);
-    
     z-index: 50;
 }
 
@@ -313,8 +316,8 @@ p {
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
-    align-items: flex-start;
-    width: 100%,;
+    align-items: stretch;
+    width: 100%;
 }
 
 .square-with-text {
@@ -349,6 +352,7 @@ p {
     margin-top: 8px;
     padding: 12px;
     width: 119%;
+    flex: 1;
     background: #9d9d9d;
     color: white;
     font-family: "MCRegular", sans-serif;
@@ -402,6 +406,7 @@ p {
     display: flex;
     gap: 20px;
     padding: 15px;
+    margin-bottom: 15px;
     background: #9d9d9d;
     /*border: 2px solid #000;*/
     box-shadow:
@@ -441,6 +446,10 @@ p {
     font-size: 1.4rem;
     color: white;
     text-shadow:2px 2px rgba(32, 32, 32)
+}
+
+.rule-info p {
+    font-weight: bold;
 }
 
 .rule-img {
@@ -524,8 +533,8 @@ p {
 }
 
 .side-btn img {
-    width: 200%;
-    height: 200%;
+    width: 96px;
+    height: 96px;
     image-rendering: pixelated;
 }
 
@@ -706,5 +715,305 @@ i {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.join-card p {
+    text-align: left;
+}
+
+.join-card hr {
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.25);
+    margin: 12px 0;
+}
+
+/* ========== HAMBURGER / SIDEBAR ========== */
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: url("images/cursor.png"), auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px;
+    z-index: 200;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: white;
+    box-shadow: 1px 1px #000a;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 250;
+}
+
+.sidebar-overlay.open {
+    display: block;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #333;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 300;
+    padding-top: 0;
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    display: block;
+    width: 80%;
+    margin: 18px auto 10px auto;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar nav {
+    border-top: 1px solid #fff3;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar nav a {
+    font-size: 1.1em;
+    color: white;
+    font-family: "MCBold", monospace;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-bottom: 1px solid #0004;
+    display: block;
+}
+
+.sidebar nav a:hover {
+    background: #444;
+    font-family: "MCBoldItalic", monospace;
+    color: #ffffa0;
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .top-bar {
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .top-bar nav {
+        display: none;
+    }
+
+    .minecraft-title {
+        display: none;
+    }
+
+    .top-title-small,
+    .top-title-small-default {
+        height: 44px;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 1 !important;
+    }
+
+    .splash-text {
+        font-size: 8px;
+        right: 90px;
+        top: 150px;
+    }
+
+    .smp-image {
+        height: 280px;
+    }
+
+    .title-button-wrapper {
+        top: auto;
+        bottom: 600px;
+        left: 50%;
+        scale: 1;
+        transform: translateX(-50%) scale(0.9);
+    }
+
+    .staff-section {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 15px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        max-width: none;
+        width: 100%;
+        margin: 20px 0;
+        justify-content: flex-start;
+        align-content: stretch;
+    }
+
+    .staff-section .staff-card {
+        flex: 0 0 360px;
+        min-width: 360px;
+    }
+
+    .two-column-layout {
+        flex-direction: column;
+        margin-top: 75px;
+    }
+
+    .changelog-sidebar {
+        width: 100%;
+        box-sizing: border-box;
+        position: static;
+    }
+
+    .image-changelog {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    .changelog-container {
+        display: block;
+        width: 100%;
+    }
+    .changelog-title {
+        font-size: 1.1rem;
+    }
+
+    .image-join,
+    .image-join-console {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .video-wrapper {
+        width: 78%;
+        box-sizing: border-box;
+        padding: 8px;
+    }
+
+    .video-wrapper iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .side-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .side-btn img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .side-btn.left {
+        left: -22px;
+    }
+
+    .side-btn.right {
+        right: -22px;
+    }
+
+    .content {
+        padding-top: 15px;
+    }
+    .join-card {
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        margin-bottom: 12px;
+    }
+    .join-card > div {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .changelog-card {
+        width: 90%;
+    }
+
+    .square-row {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 20px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        max-width: none;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+    .square-row .square-with-text {
+        flex: 0 0 160px;
+        min-width: 160px;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+    }
+    .square-row .square { width: 100%; }
+    .square-row .square-text { width: 100%; flex: 1; }
+    .square-with-text:hover { transform: none; }
+    .staff-card:hover { transform: none; }
+    .rule-card:hover { transform: none; }
+
+    .rule-card {
+        padding: 10px 12px;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+    .rule-img {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+    }
+    .rule-info h2 {
+        font-size: 1rem;
+    }
+    .rule-info p {
+        font-size: 12px;
+        text-align: left;
+    }
+
+    p { font-size: 14px; }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.05rem; }
+    .join-card p, .join-card h1, .join-card h2 { text-align: left; }
 }
 

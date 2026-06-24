@@ -12,6 +12,8 @@ window.addEventListener("scroll", () => {
             });
 
             function updateButtonPosition() {
+                if (window.innerWidth <= 768) return;
+
                 const title = document.querySelector(".minecraft-title");
                 const buttonWrapper = document.querySelector(".title-button-wrapper");
 
