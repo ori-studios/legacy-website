@@ -43,14 +43,14 @@ h1 {
     text-align: center;
     font-family: "MCBold", sans-serif;
     margin: 10px 0;
-    text-shadow: 3px 3px rgb(32, 32, 32)
+    text-shadow: 3px 3px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8)
 }
 
 h2 {
     color: white;
     font-family: "MCBoldItalic", sans-serif;
     margin: 10px 0;
-    text-shadow: 2px 2px rgb(32, 32, 32)
+    text-shadow: 2px 2px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8)
 }
 
 h3 {
@@ -58,7 +58,7 @@ h3 {
     text-align: center;
     font-family: "MCBold", sans-serif;
     margin: 10px 0;
-    text-shadow: 2px 2px rgb(32, 32, 32 )
+    text-shadow: 2px 2px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8)
 }
 
 p {
@@ -67,7 +67,7 @@ p {
     text-align: center;
     margin: 5px 0;
     color: white;
-    text-shadow: 2px 2px rgb(32, 32, 32)
+    text-shadow: 2px 2px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8)
 }
 
 .left {
@@ -83,9 +83,10 @@ p {
     align-items: center;
     justify-content: space-between;
     padding: 0 11px;
-        box-shadow:
+    box-shadow:
         inset -2px -4px #0006,
-        inset 2px 2px #fff7;
+        inset 2px 2px #fff7,
+        0px 4px 8px rgba(0, 0, 0, 0.8);
     z-index: 100;
 }
 
@@ -100,11 +101,11 @@ p {
     color: white;
     font-family: "MCBold", monospace;
     text-decoration: none;
+    text-shadow: 2px 2px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 .top-bar nav a:hover {
-    text-decoration: underline;
-    font-family: "MCBoldItalic", monospace;
+    color: #ffffa0;
 }
 
 
@@ -248,6 +249,7 @@ p {
     left: 50%;
     transform: translateX(-50%);
     z-index: 50;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.8));
 }
 
 .mc-button {
@@ -455,6 +457,7 @@ p {
 .rule-img {
     width: 100px;
     height: 100px;
+    filter: drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.7));
 }
 
 .rule-card {
@@ -553,6 +556,7 @@ p {
     text-align: center;
     color: #eee;
     font-family: "MCRegular", monospace;
+    grid-column: 1 / -1;
 }
 
 .bedrock-badge {
@@ -598,6 +602,7 @@ p {
     width: 96px;
     height: 96px;
     image-rendering: pixelated;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1)) ;
 }
 
 .side-btn.left {
@@ -609,7 +614,7 @@ p {
 }
 
 .side-btn:hover img {
-    filter: brightness(1.3);
+    filter: brightness(1.3) drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.1));
 }
 
 .side-btn.right img {
@@ -808,7 +813,7 @@ i {
     width: 28px;
     height: 3px;
     background: white;
-    box-shadow: 1px 1px #000a;
+    box-shadow: 1px 1px #000a, 0px 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -859,6 +864,7 @@ i {
 
 .sidebar.open {
     transform: translateX(0);
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7, 4px 0px 8px rgba(0, 0, 0, 0.8);
 }
 
 .sidebar nav {
@@ -875,6 +881,7 @@ i {
     padding: 14px 20px;
     border-bottom: 1px solid #0004;
     display: block;
+    text-shadow: 2px 2px rgb(32, 32, 32), 0px 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 .sidebar nav a:hover {

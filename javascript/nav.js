@@ -40,4 +40,23 @@
     `;
 
     document.currentScript.insertAdjacentHTML('beforebegin', html);
+
+    const clickSound = new Audio('sounds/press.wav');
+    function playClick() {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    }
+
+    document.querySelectorAll('.top-bar nav a, .sidebar nav a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            if (this.target === '_blank') {
+                playClick();
+            } else {
+                e.preventDefault();
+                playClick();
+                var href = this.href;
+                setTimeout(function() { window.location.href = href; }, 150);
+            }
+        });
+    });
 })();
