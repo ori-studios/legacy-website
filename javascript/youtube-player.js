@@ -1,4 +1,4 @@
-                const videos = ["GWgfnSme_L4", "REm3hyA4D_s", "ipI41GVSwBs", "sgNrAGMPurA"];
+                const videos = ["iO89LmqVcpA", "GWgfnSme_L4", "REm3hyA4D_s", "ipI41GVSwBs", "sgNrAGMPurA"];
                 let current = 0;
 
                 const clickSound = new Audio("sounds/press.wav");

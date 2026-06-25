@@ -166,6 +166,27 @@ p {
          outset 2px 2px #fff7;;
 }
 
+#panorama-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 57px;
+}
+
+#panorama-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#panorama-background canvas {
+    display: block;
+}
+
 .smp-image {
     width: 100%;
     height: 685px;
@@ -1184,6 +1205,17 @@ i {
         flex-wrap: wrap;
         justify-content: center;
         gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+        #panorama-wrapper {
+            height: 300px;
+            margin-top: 0;
+        }
+
+        .title-button-wrapper {
+            transform: translate(-50%, -50%) scale(0.9);
+        }
     }
 }
 

@@ -15,7 +15,7 @@
         <footer class="site-footer">
             <div class="footer-left">
                 <span class="footer-copy">&copy; ${year} Legacy SMP</span>
-                <span class="footer-owner">Founded by Ori-Studios</span>
+                <span class="footer-owner">Ori Studios</span>
             </div>
             <nav class="footer-nav">${links}</nav>
             <div class="footer-right">
