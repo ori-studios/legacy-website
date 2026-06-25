@@ -1,11 +1,10 @@
 const SERVER_HOST = 'legacy-smp.uk';
-const STEVE_HEAD = 'https://mc-heads.net/avatar/steve/64';
+const STEVE_HEAD = 'https://visage.surgeplay.com/face/64/steve';
 
 function isFloodgateUUID(uuid) {
     return uuid && /^00000000-0000-0000-/.test(uuid);
 }
 
-// Floodgate stores the XUID (Xbox Live ID) in the lower 64 bits of the UUID
 function xuidFromFloodgateUUID(uuid) {
     const hex = uuid.replace(/-/g, '').slice(16);
     return BigInt('0x' + hex).toString();
@@ -19,31 +18,49 @@ function isBedrockPlayer(p) {
     return isFloodgateUUID(p.uuid) || p.name.startsWith('.');
 }
 
+function renderHeadFromSkinUrl(skinUrl) {
+    return new Promise(resolve => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+            if (!img.naturalWidth) { resolve(null); return; }
+            const s = img.naturalWidth / 64;
+            const canvas = document.createElement('canvas');
+            canvas.width = 64; canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(img, 8*s, 8*s, 8*s, 8*s, 0, 0, 64, 64);
+            ctx.drawImage(img, 40*s, 8*s, 8*s, 8*s, 0, 0, 64, 64);
+            try { resolve(canvas.toDataURL()); } catch { resolve(null); }
+        };
+        img.onerror = () => resolve(null);
+        img.src = skinUrl;
+    });
+}
+
+async function javaHeadDataUrl(uuid) {
+    try {
+        const res = await fetch(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid.replace(/-/g, '')}`);
+        if (!res.ok) return null;
+        const profile = await res.json();
+        const prop = profile.properties?.find(p => p.name === 'textures');
+        if (!prop) return null;
+        const textures = JSON.parse(atob(prop.value));
+        const skinUrl = textures?.textures?.SKIN?.url;
+        if (!skinUrl) return null;
+        return await renderHeadFromSkinUrl(skinUrl);
+    } catch {
+        return null;
+    }
+}
+
 async function bedrockHeadDataUrl(xuid) {
     try {
         const res = await fetch(`https://api.geysermc.org/v2/skin/${xuid}`);
         if (!res.ok) return null;
         const { texture_id } = await res.json();
         if (!texture_id) return null;
-
-        return await new Promise(resolve => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => {
-                // Bedrock skins can be 64px or 128px wide; scale face region accordingly
-                const s = img.naturalWidth / 64;
-                const canvas = document.createElement('canvas');
-                canvas.width = 64;
-                canvas.height = 64;
-                const ctx = canvas.getContext('2d');
-                ctx.imageSmoothingEnabled = false;
-                ctx.drawImage(img, 8*s, 8*s, 8*s, 8*s, 0, 0, 64, 64); // face
-                ctx.drawImage(img, 40*s, 8*s, 8*s, 8*s, 0, 0, 64, 64); // hat layer
-                resolve(canvas.toDataURL());
-            };
-            img.onerror = () => resolve(null);
-            img.src = `https://textures.minecraft.net/texture/${texture_id}`;
-        });
+        return await renderHeadFromSkinUrl(`https://textures.minecraft.net/texture/${texture_id}`);
     } catch {
         return null;
     }
@@ -52,19 +69,22 @@ async function bedrockHeadDataUrl(xuid) {
 async function buildPlayerCard(player) {
     const bedrock = isBedrockPlayer(player);
     const name = cleanName(player.name);
+    const mcheadsUrl = `https://visage.surgeplay.com/face/64/${encodeURIComponent(player.uuid ?? player.name)}`;
 
     let avatarSrc;
     if (bedrock && isFloodgateUUID(player.uuid)) {
         const xuid = xuidFromFloodgateUUID(player.uuid);
         avatarSrc = (await bedrockHeadDataUrl(xuid)) ?? STEVE_HEAD;
+    } else if (player.uuid) {
+        avatarSrc = (await javaHeadDataUrl(player.uuid)) ?? mcheadsUrl;
     } else {
-        avatarSrc = `https://mc-heads.net/avatar/${encodeURIComponent(player.name)}/64`;
+        avatarSrc = mcheadsUrl;
     }
 
     return `
         <div class="player-entry">
             <img src="${avatarSrc}" class="player-img" alt="${name}"
-                 onerror="this.src='${STEVE_HEAD}'" />
+                 onerror="if(this.dataset.r){this.onerror=null;this.src='${STEVE_HEAD}';}else{this.dataset.r=1;this.src='${mcheadsUrl}';}" />
             <h2 class="player-name">${name}</h2>
             ${bedrock ? '<p class="bedrock-badge">Bedrock</p>' : ''}
         </div>`;
