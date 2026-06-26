@@ -24,10 +24,14 @@ scene.background = cubemap;
 
 let rotation = 0;
 
+function getCameraTilt() {
+    return window.innerWidth < 768 ? -3 : 0;
+}
+
 function animate() {
     requestAnimationFrame(animate);
     rotation += 0.00025;
-    camera.lookAt(Math.sin(rotation) * 10, 0, Math.cos(rotation) * 10);
+    camera.lookAt(Math.sin(rotation) * 10, getCameraTilt(), Math.cos(rotation) * 10);
     renderer.render(scene, camera);
 }
 
