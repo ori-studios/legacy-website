@@ -1210,6 +1210,19 @@ i {
         gap: 12px;
     }
 
+    .section-divider {
+        margin: 0;
+        border: none;
+        height: 6px;
+
+
+        background: #7a7a7a;
+        box-shadow:
+            inset -2px -2px #3e3e3e,
+            inset 2px 2px #ffffff,
+            0 2px 6px rgba(0, 0, 0, 0.35);
+    }
+
     @media (max-width: 768px) {
         #panorama-wrapper {
             height: 300px;
